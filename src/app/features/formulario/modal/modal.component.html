@@ -1,0 +1,25 @@
+  
+<div class="modal-header">
+    <h4 class="modal-title">Crear Cliente</h4>
+    <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+<div class="modal-body">
+    <form [formGroup]="clienteForm" (ngSubmit)="saveCliente()">
+        <div class="form-group">
+            <label for="idc">IDC</label>
+            <input type="text" id="idc" placeholder="IDC" class="form-control" formControlName="idc" />
+            <span style="color:Red;" *ngIf="clienteForm.controls['idc'].touched && clienteForm.controls['idc'].errors?.required">Se requiere poner el IDC.</span>
+        </div>
+        <div class="form-group">
+            <label for="cliente">Nombre del cliente</label>
+            <textarea  id="cliente" placeholder="Nombre del cliente" class="form-control" formControlName="cliente"></textarea>
+            <span style="color:Red;" *ngIf="clienteForm.controls['cliente'].touched && clienteForm.controls['cliente'].errors?.required">Se requiere poner el Nombre del cliente.</span>
+        </div>
+    </form>
+</div>
+<div class="modal-footer">
+    <button type="button" class="btn btn-outline-dark" (click)="activeModal.close('Close click')">Close</button>
+    <button class="btn btn-primary" (click)="saveCliente()" [disabled]="clienteForm.invalid">Save</button>
+</div>
